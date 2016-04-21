@@ -13,6 +13,14 @@
 		4C056EF81CC8E68000F32F90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C056EF61CC8E68000F32F90 /* Main.storyboard */; };
 		4C056EFA1CC8E68000F32F90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C056EF91CC8E68000F32F90 /* Assets.xcassets */; };
 		4C056EFD1CC8E68000F32F90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C056EFB1CC8E68000F32F90 /* LaunchScreen.storyboard */; };
+		4C056F051CC8E77500F32F90 /* Picture in Resources */ = {isa = PBXBuildFile; fileRef = 4C056F041CC8E77500F32F90 /* Picture */; };
+		4C056F081CC8E82F00F32F90 /* MKAppRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F071CC8E82F00F32F90 /* MKAppRecord.m */; };
+		4C056F0B1CC8E85F00F32F90 /* MKGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F0A1CC8E85F00F32F90 /* MKGrid.m */; };
+		4C056F0E1CC8E88700F32F90 /* MKArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F0D1CC8E88700F32F90 /* MKArchiver.m */; };
+		4C056F111CC8E8B500F32F90 /* MKMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F101CC8E8B500F32F90 /* MKMonster.m */; };
+		4C056F141CC8E8C900F32F90 /* MKTower.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F131CC8E8C900F32F90 /* MKTower.m */; };
+		4C056F171CC8E8F800F32F90 /* MKMonsterBlood.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F161CC8E8F800F32F90 /* MKMonsterBlood.m */; };
+		4C056F191CC8EAC200F32F90 /* roadArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C056F181CC8EAC200F32F90 /* roadArray.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,20 @@
 		4C056EF91CC8E68000F32F90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C056EFC1CC8E68000F32F90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C056EFE1CC8E68000F32F90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C056F041CC8E77500F32F90 /* Picture */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Picture; sourceTree = "<group>"; };
+		4C056F061CC8E82F00F32F90 /* MKAppRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAppRecord.h; sourceTree = "<group>"; };
+		4C056F071CC8E82F00F32F90 /* MKAppRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAppRecord.m; sourceTree = "<group>"; };
+		4C056F091CC8E85F00F32F90 /* MKGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKGrid.h; sourceTree = "<group>"; };
+		4C056F0A1CC8E85F00F32F90 /* MKGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKGrid.m; sourceTree = "<group>"; };
+		4C056F0C1CC8E88700F32F90 /* MKArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKArchiver.h; sourceTree = "<group>"; };
+		4C056F0D1CC8E88700F32F90 /* MKArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKArchiver.m; sourceTree = "<group>"; };
+		4C056F0F1CC8E8B500F32F90 /* MKMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMonster.h; sourceTree = "<group>"; };
+		4C056F101CC8E8B500F32F90 /* MKMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMonster.m; sourceTree = "<group>"; };
+		4C056F121CC8E8C900F32F90 /* MKTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKTower.h; sourceTree = "<group>"; };
+		4C056F131CC8E8C900F32F90 /* MKTower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTower.m; sourceTree = "<group>"; };
+		4C056F151CC8E8F800F32F90 /* MKMonsterBlood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMonsterBlood.h; sourceTree = "<group>"; };
+		4C056F161CC8E8F800F32F90 /* MKMonsterBlood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMonsterBlood.m; sourceTree = "<group>"; };
+		4C056F181CC8EAC200F32F90 /* roadArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = roadArray.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +80,7 @@
 		4C056EEC1CC8E68000F32F90 /* MonsterDefend */ = {
 			isa = PBXGroup;
 			children = (
+				4C056F041CC8E77500F32F90 /* Picture */,
 				4C056EF01CC8E68000F32F90 /* AppDelegate.h */,
 				4C056EF11CC8E68000F32F90 /* AppDelegate.m */,
 				4C056EF31CC8E68000F32F90 /* ViewController.h */,
@@ -65,6 +88,7 @@
 				4C056EF61CC8E68000F32F90 /* Main.storyboard */,
 				4C056EF91CC8E68000F32F90 /* Assets.xcassets */,
 				4C056EFB1CC8E68000F32F90 /* LaunchScreen.storyboard */,
+				4C056F181CC8EAC200F32F90 /* roadArray.plist */,
 				4C056EFE1CC8E68000F32F90 /* Info.plist */,
 				4C056EED1CC8E68000F32F90 /* Supporting Files */,
 			);
@@ -75,6 +99,18 @@
 			isa = PBXGroup;
 			children = (
 				4C056EEE1CC8E68000F32F90 /* main.m */,
+				4C056F061CC8E82F00F32F90 /* MKAppRecord.h */,
+				4C056F071CC8E82F00F32F90 /* MKAppRecord.m */,
+				4C056F091CC8E85F00F32F90 /* MKGrid.h */,
+				4C056F0A1CC8E85F00F32F90 /* MKGrid.m */,
+				4C056F0C1CC8E88700F32F90 /* MKArchiver.h */,
+				4C056F0D1CC8E88700F32F90 /* MKArchiver.m */,
+				4C056F0F1CC8E8B500F32F90 /* MKMonster.h */,
+				4C056F101CC8E8B500F32F90 /* MKMonster.m */,
+				4C056F121CC8E8C900F32F90 /* MKTower.h */,
+				4C056F131CC8E8C900F32F90 /* MKTower.m */,
+				4C056F151CC8E8F800F32F90 /* MKMonsterBlood.h */,
+				4C056F161CC8E8F800F32F90 /* MKMonsterBlood.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -139,7 +175,9 @@
 			files = (
 				4C056EFD1CC8E68000F32F90 /* LaunchScreen.storyboard in Resources */,
 				4C056EFA1CC8E68000F32F90 /* Assets.xcassets in Resources */,
+				4C056F191CC8EAC200F32F90 /* roadArray.plist in Resources */,
 				4C056EF81CC8E68000F32F90 /* Main.storyboard in Resources */,
+				4C056F051CC8E77500F32F90 /* Picture in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,9 +188,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C056F081CC8E82F00F32F90 /* MKAppRecord.m in Sources */,
+				4C056F0B1CC8E85F00F32F90 /* MKGrid.m in Sources */,
 				4C056EF51CC8E68000F32F90 /* ViewController.m in Sources */,
+				4C056F111CC8E8B500F32F90 /* MKMonster.m in Sources */,
+				4C056F0E1CC8E88700F32F90 /* MKArchiver.m in Sources */,
+				4C056F141CC8E8C900F32F90 /* MKTower.m in Sources */,
 				4C056EF21CC8E68000F32F90 /* AppDelegate.m in Sources */,
 				4C056EEF1CC8E68000F32F90 /* main.m in Sources */,
+				4C056F171CC8E8F800F32F90 /* MKMonsterBlood.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
