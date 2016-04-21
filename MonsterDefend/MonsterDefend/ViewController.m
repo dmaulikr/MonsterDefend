@@ -55,8 +55,8 @@
     gridSpace = 0;
     mainBackGroundColor = [UIColor lightGrayColor];
     gridBackGroundColor = [UIColor grayColor];
-    gridWidth = (screenWidth - leftSpace-rightSpace)/columns-(gridSpace*columns)/(columns-1);
-    gridHeight = (screenHeight - topSpace - bottomSpace)/rows - (gridSpace*rows)/(rows-1);
+    gridWidth = (screenWidth - leftSpace-rightSpace-gridSpace*(columns-1))/columns;
+    gridHeight = (screenHeight - topSpace - bottomSpace-gridSpace*(rows-1))/rows;
     
     //全局对象初始化
     gridArray = [[NSMutableArray alloc]init];
