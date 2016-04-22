@@ -55,8 +55,8 @@
     //app环境初始化
     screenWidth = [[UIScreen mainScreen] bounds].size.width;
     screenHeight =[[UIScreen mainScreen] bounds].size.height;
-    columns = 6;
-    rows = 8;
+    columns = 4;
+    rows = 6;
     topSpace = 100;
     bottomSpace = 70;
     leftSpace = 10;
@@ -85,12 +85,16 @@
     appRecord.monsterArray = monsterArray;
     appRecord.roadArray = roadArray;
     appRecord.towerArray = towerArray;
+    appRecord.gridWidth = gridWidth;
+    appRecord.gridHight = gridHeight;
+    appRecord.rows = rows;
+    appRecord.columns = columns;
     [self initMonsterPicture];
     appRecord.monsterImageArray = monsterImageArray;
     
     
     
-    //初始化主视图
+    //初始化主视图,注意rows就是colY,而columns就是rowX,注意其中的转换！
     self.view.backgroundColor = mainBackGroundColor;
     for(int j = 0 ; j<rows; j++ ){
         NSMutableArray *viewRow;
@@ -104,7 +108,7 @@
             newGrid.colY = j;
             newGrid.width=gridWidth;
             newGrid.height=gridHeight;
-            // [newGrid setTitle:[NSString stringWithFormat:@"x%dy%d",newGrid.rowX,newGrid.colY] forState:UIControlStateNormal];
+             [newGrid setTitle:[NSString stringWithFormat:@"x%dy%d",newGrid.rowX,newGrid.colY] forState:UIControlStateNormal];
             
             //设置grid触发事件，可选,###注意，其中action调用的方法gridTouchAtion的默认参数就是newGrid!
             [newGrid addTarget:self action:@selector(gridTouchAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -257,6 +261,10 @@
         [tmpMonster destroyMonster];
     }
     [monsterArray removeAllObjects];
+    for (MKGrid *tmpGrid in roadArray) {
+        tmpGrid.width = gridWidth;
+        tmpGrid.height = gridHeight;
+    }
     [roadArray removeAllObjects];
     [towerArray removeAllObjects];
     

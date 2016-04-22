@@ -55,8 +55,9 @@
             //加入进度条
             
             ProgressBar = [[MKMonsterBlood alloc]init];
-            ProgressBar.frame = CGRectMake(3, 0, roadGrid.width-5, 20);
-            ProgressBar.progress = blood/100;
+            ProgressBar.frame = CGRectMake(3, 0, roadGrid.width-5, roadGrid.height/5);
+            NSLog(@"roadGrid.width:%f",roadGrid.width);
+            ProgressBar.progress = 1;
             [monsterView addSubview:ProgressBar];
             
             [appRecord.viewController.view addSubview:monsterView];

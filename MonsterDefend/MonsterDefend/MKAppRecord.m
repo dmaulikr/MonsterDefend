@@ -10,7 +10,7 @@
 
 @implementation MKAppRecord
 
-@synthesize gridMatrixArray,monsterArray,roadArray,towerArray,recordExportPath;
+@synthesize gridMatrixArray,monsterArray,roadArray,towerArray,recordExportPath,gridWidth,gridHight,columns,rows;
 
 -(instancetype)init{
     
@@ -38,8 +38,8 @@
         saveArchiver.moveX = saveGrid.moveX;
         saveArchiver.moveY = saveGrid.moveY;
         saveArchiver.moveIndex = saveGrid.moveIndex;
-        saveArchiver.width = saveGrid.width;
-        saveArchiver.height = saveGrid.height;
+//        saveArchiver.width = saveGrid.width;
+//        saveArchiver.height = saveGrid.height;
         saveArchiver.gridRole = saveGrid.gridRole;
         [saveArray addObject:saveArchiver];
     }
@@ -61,6 +61,8 @@
     NSLog(@"importArray.count:%lu",importArray.count);
     for(MKArchiver *importArchiver in importArray){
         
+        if (importArchiver.rowX < columns && importArchiver.colY<rows){
+            NSLog(@"import: archivex:%d,Y:%d,rows:%d,cols:%d",importArchiver.rowX,importArchiver.colY,rows,columns);
         MKGrid *importGrid;
         importGrid = gridMatrixArray[importArchiver.colY][importArchiver.rowX];
         
@@ -69,11 +71,16 @@
         importGrid.moveX = importArchiver.moveX;
         importGrid.moveY = importArchiver.moveY;
         importGrid.moveIndex = importArchiver.moveIndex;
-        importGrid.width = importArchiver.width;
-        importGrid.height = importArchiver.height;
+
+        //to allow import maps from diffent divices;
+//        importGrid.width = importArchiver.width;
+//        importGrid.height = importArchiver.height;
+//        importGrid.width = gridWidth;
+//        importGrid.height = gridHight;
         importGrid.gridRole = importArchiver.gridRole;
         
         [_roadRecordArray addObject:importGrid];
+        }
     }
     
     

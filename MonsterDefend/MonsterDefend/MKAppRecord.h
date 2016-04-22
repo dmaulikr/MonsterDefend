@@ -25,7 +25,10 @@
 @property (strong ,nonatomic) NSMutableArray *towerArray;
 @property (strong ,nonatomic) NSString *recordExportPath;
 @property  (strong , nonatomic)NSMutableArray *monsterImageArray ;
-
+@property (assign,nonatomic) CGFloat gridWidth;
+@property (assign,nonatomic) CGFloat gridHight;
+@property (assign,nonatomic) int columns;
+@property (assign,nonatomic) int rows;
 
 -(void)roadRecordSave:(NSMutableArray *)_roadRecordArray andFileName:(NSString *)_fileName;
 -(void)roadRecordImport:(NSMutableArray *)_roadRecordArray andFileName:(NSString *)_fileName;

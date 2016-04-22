@@ -13,7 +13,7 @@
     UIColor *gridBackGroundColor;
 }
 
-@synthesize moveX,moveY,gridRole;
+@synthesize moveX,moveY,moveIndex, gridRole;
 
 - (instancetype)initWithBackGroundColor:(UIColor *)_gridBackGroundColor
 {
@@ -33,6 +33,7 @@
     self.backgroundColor = gridBackGroundColor;
     moveX = 0;
     moveY = 0;
+    moveIndex = 0;
     self.gridRole = EmptyThere ;
     
     for (UIView *tmpView in self.imageView.subviews) {
