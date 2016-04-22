@@ -15,6 +15,8 @@
     int index ;
     //指定自己显示的图片
     NSMutableArray *walkImageArray;
+    //血条
+    MKMonsterBlood *ProgressBar;
 }
 
 @synthesize appRecord,blood,money,rowX,colY,originX,originY, is_attacked,monsterWalkTimer,monsterShowPictureTimer,monsterView;
@@ -51,7 +53,7 @@
             NSLog(@"animating...%d",roadGrid.moveIndex);
            
             //加入进度条
-            MKMonsterBlood *ProgressBar;
+            
             ProgressBar = [[MKMonsterBlood alloc]init];
             ProgressBar.frame = CGRectMake(3, 0, roadGrid.width-5, 20);
             ProgressBar.progress = blood/100;
@@ -89,27 +91,36 @@
         int inGridMoveNum;
         inGridMoveNum = index%10;
         
-        MKGrid *roadGrid ;
-        roadGrid = appRecord.roadArray[index/10];
-        rowX = roadGrid.rowX;
-        colY = roadGrid.colY;
+        MKGrid *currentGrid ;
+        currentGrid = appRecord.roadArray[index/10];
+        
         
         //进入新的grid后重置monsterView相关参数
         if(inGridMoveNum==0){
-            walkImageArray = appRecord.monsterImageArray[roadGrid.moveIndex];
+            
+            rowX = currentGrid.rowX;
+            colY = currentGrid.colY;
+            blood -= 10;
+            ProgressBar.progress = blood/100;
+            
+            walkImageArray = appRecord.monsterImageArray[currentGrid.moveIndex];
             monsterView.animationImages = walkImageArray;
             monsterView.animationDuration=0.45 ;
             monsterView.animationRepeatCount = 0 ;//forever
             [monsterView startAnimating];
-            originX = roadGrid.frame.origin.x;
-            originY = roadGrid.frame.origin.y;
+            originX = currentGrid.frame.origin.x;
+            originY = currentGrid.frame.origin.y;
             NSLog(@"directoin change...");
+
+            //添加新的monster不能放在这里，因为会发生指数级增长
+//            MKMonster *newMonster = [[MKMonster alloc]initWithAppRecord:appRecord];
+//            [appRecord.monsterArray addObject:newMonster];
         }
         
-        self.monsterView.frame = CGRectMake(originX+inGridMoveNum*roadGrid.width/10*roadGrid.moveX, originY+inGridMoveNum*roadGrid.height/10*roadGrid.moveY, roadGrid.frame.size.width,roadGrid.frame.size.height);
+        self.monsterView.frame = CGRectMake(originX+inGridMoveNum*currentGrid.width/10*currentGrid.moveX, originY+inGridMoveNum*currentGrid.height/10*currentGrid.moveY, currentGrid.frame.size.width,currentGrid.frame.size.height);
         
-        is_attacked = 0;
-        NSLog(@"self.col:%d,self.row:%d,roadGrid.moveIndex:%d",colY,rowX,roadGrid.moveIndex);
+//        is_attacked = 0;
+//        NSLog(@"self.col:%d,self.row:%d,roadGrid.moveIndex:%d",colY,rowX,roadGrid.moveIndex);
         index++ ;
         
         

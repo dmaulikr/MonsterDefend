@@ -104,7 +104,7 @@
             newGrid.colY = j;
             newGrid.width=gridWidth;
             newGrid.height=gridHeight;
-             [newGrid setTitle:[NSString stringWithFormat:@"x%dy%d",newGrid.rowX,newGrid.colY] forState:UIControlStateNormal];
+            // [newGrid setTitle:[NSString stringWithFormat:@"x%dy%d",newGrid.rowX,newGrid.colY] forState:UIControlStateNormal];
             
             //设置grid触发事件，可选,###注意，其中action调用的方法gridTouchAtion的默认参数就是newGrid!
             [newGrid addTarget:self action:@selector(gridTouchAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -182,8 +182,11 @@
         
         if(is_GameStart==NO){
             is_GameStart = YES;
-            MKMonster *newMonster = [[MKMonster alloc]initWithAppRecord:appRecord];
-            [monsterArray addObject:newMonster];
+            [self generateNewMonster];
+            NSTimer *monsterGenerate = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(generateNewMonster) userInfo:nil repeats:YES];
+            [timerArray addObject:monsterGenerate];
+            [[NSRunLoop currentRunLoop] addTimer:monsterGenerate forMode:NSRunLoopCommonModes];
+            
             [sender setTitle:@"重新开始" forState:UIControlStateNormal];
         }
         else{
@@ -192,6 +195,14 @@
             [sender setTitle:@"开始游戏" forState:UIControlStateNormal];
             is_GameStart = NO;
         }
+    }
+}
+
+-(void)generateNewMonster{
+    
+    if(monsterArray.count<roadArray.count*5/5){
+    MKMonster *newMonster = [[MKMonster alloc]initWithAppRecord:appRecord];
+    [monsterArray addObject:newMonster];
     }
 }
 
