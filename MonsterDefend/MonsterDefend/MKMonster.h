@@ -18,16 +18,25 @@
 @property  (strong , nonatomic)MKAppRecord *appRecord ;
 
 //自己的变量
-@property  (strong , nonatomic)UIImageView *showImage ;
+@property  (strong , nonatomic)UIImageView *monsterView ;
 @property  (assign , nonatomic) CGFloat blood ;
 @property  (assign , nonatomic) int money ;
 
 @property  (assign , nonatomic)int  rowX ;
 @property  (assign , nonatomic)int  colY ;
 
+@property  (assign , nonatomic)CGFloat  originX ;
+@property  (assign , nonatomic)CGFloat  originY ;
+
+
 @property  (assign , nonatomic)BOOL  is_attacked;
+
+@property  (strong , nonatomic) NSTimer *monsterWalkTimer;
+@property  (strong , nonatomic) NSTimer *monsterShowPictureTimer;
+
 
 
 -(instancetype)initWithAppRecord:(MKAppRecord *)_allRecord;
+-(void)destroyMonster;
 
 @end

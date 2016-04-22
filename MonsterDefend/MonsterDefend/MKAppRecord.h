@@ -12,7 +12,14 @@
 #import "MKArchiver.h"
 
 @interface MKAppRecord : NSObject
-@property (strong ,nonatomic) NSMutableArray *gridArray;
+
+@property (strong ,nonatomic) UIViewController *viewController;
+
+@property (strong ,nonatomic) NSMutableArray *gridMatrixArray;
+@property (strong ,nonatomic) NSMutableArray *gridLinearArray;
+
+@property (strong ,nonatomic) NSMutableArray *timerArray;
+
 @property (strong ,nonatomic) NSMutableArray *monsterArray;
 @property (strong ,nonatomic) NSMutableArray *roadArray;
 @property (strong ,nonatomic) NSMutableArray *towerArray;

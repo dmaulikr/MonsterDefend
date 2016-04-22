@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum gridRole:NSUInteger{
+typedef enum gridRole:NSInteger{
     
     EmptyThere = 1<<0,
     RoadThere = 1<<1,
     MonsterThere = 1<<2,
     TowerThere = 1 << 3,
+    RoadThereAvailable = 1<<4,
     
 }gridRole;
 
@@ -21,8 +22,19 @@ typedef enum gridRole:NSUInteger{
 
 @property (assign,nonatomic) int rowX;
 @property (assign,nonatomic) int colY;
-@property (assign,nonatomic) int width;
-@property (assign,nonatomic) int height;
+@property (assign,nonatomic) int moveX;
+@property (assign,nonatomic) int moveY;
+@property (assign,nonatomic) int moveIndex;
+
+
+//初始化后，一定要记得给width和height赋值
+@property (assign,nonatomic) CGFloat width;
+@property (assign,nonatomic) CGFloat height;
 @property (assign,nonatomic) gridRole gridRole;
+
+
+- (instancetype)initWithBackGroundColor:(UIColor *)_gridBackGroundColor;
+
+-(void)reset;
 
 @end

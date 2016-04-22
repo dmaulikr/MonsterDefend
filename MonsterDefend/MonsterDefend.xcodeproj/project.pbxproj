@@ -20,7 +20,7 @@
 		4C056F111CC8E8B500F32F90 /* MKMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F101CC8E8B500F32F90 /* MKMonster.m */; };
 		4C056F141CC8E8C900F32F90 /* MKTower.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F131CC8E8C900F32F90 /* MKTower.m */; };
 		4C056F171CC8E8F800F32F90 /* MKMonsterBlood.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C056F161CC8E8F800F32F90 /* MKMonsterBlood.m */; };
-		4C056F191CC8EAC200F32F90 /* roadArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C056F181CC8EAC200F32F90 /* roadArray.plist */; };
+		4C7F49121CCA1ADF004AD224 /* roadArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C7F49111CCA1ADF004AD224 /* roadArray.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +47,7 @@
 		4C056F131CC8E8C900F32F90 /* MKTower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKTower.m; sourceTree = "<group>"; };
 		4C056F151CC8E8F800F32F90 /* MKMonsterBlood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMonsterBlood.h; sourceTree = "<group>"; };
 		4C056F161CC8E8F800F32F90 /* MKMonsterBlood.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMonsterBlood.m; sourceTree = "<group>"; };
-		4C056F181CC8EAC200F32F90 /* roadArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = roadArray.plist; sourceTree = "<group>"; };
+		4C7F49111CCA1ADF004AD224 /* roadArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = roadArray.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 				4C056EF61CC8E68000F32F90 /* Main.storyboard */,
 				4C056EF91CC8E68000F32F90 /* Assets.xcassets */,
 				4C056EFB1CC8E68000F32F90 /* LaunchScreen.storyboard */,
-				4C056F181CC8EAC200F32F90 /* roadArray.plist */,
+				4C7F49111CCA1ADF004AD224 /* roadArray.plist */,
 				4C056EFE1CC8E68000F32F90 /* Info.plist */,
 				4C056EED1CC8E68000F32F90 /* Supporting Files */,
 			);
@@ -175,7 +175,7 @@
 			files = (
 				4C056EFD1CC8E68000F32F90 /* LaunchScreen.storyboard in Resources */,
 				4C056EFA1CC8E68000F32F90 /* Assets.xcassets in Resources */,
-				4C056F191CC8EAC200F32F90 /* roadArray.plist in Resources */,
+				4C7F49121CCA1ADF004AD224 /* roadArray.plist in Resources */,
 				4C056EF81CC8E68000F32F90 /* Main.storyboard in Resources */,
 				4C056F051CC8E77500F32F90 /* Picture in Resources */,
 			);
@@ -345,6 +345,7 @@
 				4C056F031CC8E68000F32F90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

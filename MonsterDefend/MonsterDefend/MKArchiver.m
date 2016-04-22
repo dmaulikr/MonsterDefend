@@ -10,7 +10,7 @@
 
 @implementation MKArchiver
 
-@synthesize rowX,colY;
+@synthesize rowX,colY,moveX,moveY,moveIndex,width,height,gridRole;
 
 //自己调用
 //解码
@@ -22,6 +22,12 @@
         //解码中用到的KEY必须跟编码时的KEY值一致
         rowX = [aDecoder decodeIntForKey:@"rowX"];
         colY = [aDecoder decodeIntForKey:@"colY"];
+        moveX = [aDecoder decodeIntForKey:@"moveX"];
+        moveY = [aDecoder decodeIntForKey:@"moveY"];
+        moveIndex = [aDecoder decodeIntForKey:@"moveIndex"];
+        width = [aDecoder decodeDoubleForKey:@"width"];
+        height = [aDecoder decodeDoubleForKey:@"height"];
+        gridRole = [aDecoder decodeIntegerForKey:@"gridRole"];
         
     }
     return self ;
@@ -33,6 +39,13 @@
     //将类成员进行编码
     [aCoder  encodeInt:rowX forKey:@"rowX"];
     [aCoder  encodeInt:colY forKey:@"colY"];
+    [aCoder  encodeInt:moveX forKey:@"moveX"];
+    [aCoder  encodeInt:moveY forKey:@"moveY"];
+    [aCoder encodeInt:moveIndex forKey:@"moveIndex"];
+    [aCoder encodeDouble:width forKey:@"width"];
+    [aCoder encodeDouble:height forKey:@"height"];
+    [aCoder encodeInteger:gridRole forKey:@"gridRole"];
+    
     
     
 }

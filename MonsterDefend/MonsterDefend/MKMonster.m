@@ -9,11 +9,15 @@
 #import "MKMonster.h"
 
 @implementation MKMonster
+
 {
-    int index ;   //在路上的下标为多少
+    //在路上的下标为多少
+    int index ;
+    //指定自己显示的图片
+    NSMutableArray *walkImageArray;
 }
 
-@synthesize appRecord,blood,money,rowX,colY,is_attacked;
+@synthesize appRecord,blood,money,rowX,colY,originX,originY, is_attacked,monsterWalkTimer,monsterShowPictureTimer,monsterView;
 
 -(instancetype)initWithAppRecord:(MKAppRecord *)_appRecord
 {
@@ -33,89 +37,96 @@
         appRecord = _appRecord;
         NSLog(@"monster init appRecord.monsterimangearray.count:%lu",appRecord.monsterImageArray.count);
         
-        //刷图片
-        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(Show_Picture) userInfo:nil repeats:YES];
         
-        
-        [NSTimer  scheduledTimerWithTimeInterval:1 target:self selector:@selector(Walk_Road) userInfo:nil repeats:YES];
-        
+        if(appRecord.roadArray.count>0){
+            MKGrid *roadGrid ;
+            roadGrid = appRecord.roadArray[0];
+            monsterView = [[UIImageView alloc]init];
+            monsterView.frame = roadGrid.frame;
+            walkImageArray = appRecord.monsterImageArray[roadGrid.moveIndex];
+            monsterView.animationImages = walkImageArray;
+            monsterView.animationDuration=0.45 ;
+            monsterView.animationRepeatCount = 0 ;//forever
+            [monsterView startAnimating];
+            NSLog(@"animating...%d",roadGrid.moveIndex);
+           
+            //加入进度条
+            MKMonsterBlood *ProgressBar;
+            ProgressBar = [[MKMonsterBlood alloc]init];
+            ProgressBar.frame = CGRectMake(3, 0, roadGrid.width-5, 20);
+            ProgressBar.progress = blood/100;
+            [monsterView addSubview:ProgressBar];
+            
+            [appRecord.viewController.view addSubview:monsterView];
+            
+           
+            
+            //刷图片
+//            monsterShowPictureTimer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(Show_Picture) userInfo:nil repeats:YES];
+//            [[NSRunLoop currentRunLoop] addTimer:monsterShowPictureTimer forMode:NSRunLoopCommonModes];
+//            [appRecord.timerArray addObject:monsterShowPictureTimer];
+            
+//            
+            monsterWalkTimer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(Walk_Road) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:monsterWalkTimer forMode:NSRunLoopCommonModes];
+            [appRecord.timerArray addObject:monsterWalkTimer];
+        }
     }
     
     return self ;
 }
 
+-(void)destroyMonster{
+    [monsterShowPictureTimer invalidate];
+    [monsterWalkTimer invalidate];
+    [monsterView removeFromSuperview];
+}
 
+
+-(void)Walk_Road
+{
+    if (index <= (appRecord.roadArray.count-1)*10) {
+        int inGridMoveNum;
+        inGridMoveNum = index%10;
+        
+        MKGrid *roadGrid ;
+        roadGrid = appRecord.roadArray[index/10];
+        rowX = roadGrid.rowX;
+        colY = roadGrid.colY;
+        
+        //进入新的grid后重置monsterView相关参数
+        if(inGridMoveNum==0){
+            walkImageArray = appRecord.monsterImageArray[roadGrid.moveIndex];
+            monsterView.animationImages = walkImageArray;
+            monsterView.animationDuration=0.45 ;
+            monsterView.animationRepeatCount = 0 ;//forever
+            [monsterView startAnimating];
+            originX = roadGrid.frame.origin.x;
+            originY = roadGrid.frame.origin.y;
+            NSLog(@"directoin change...");
+        }
+        
+        self.monsterView.frame = CGRectMake(originX+inGridMoveNum*roadGrid.width/10*roadGrid.moveX, originY+inGridMoveNum*roadGrid.height/10*roadGrid.moveY, roadGrid.frame.size.width,roadGrid.frame.size.height);
+        
+        is_attacked = 0;
+        NSLog(@"self.col:%d,self.row:%d,roadGrid.moveIndex:%d",colY,rowX,roadGrid.moveIndex);
+        index++ ;
+        
+        
+    }
+}
+
+#if 0
 -(void)Show_Picture
 {
     if(blood>0){
         static int i = 0 ;
-        
-        
         NSMutableArray *walkImageArray;
-        
-        if(index < appRecord.roadArray.count-1 && appRecord.roadArray.count>2){
-            
-            MKGrid *currentGrid,*nextGrid;
-            currentGrid = appRecord.roadArray[index];
-            nextGrid = appRecord.roadArray[index+1];
-            
-            //向上走
-            if(nextGrid.rowX<currentGrid.rowX){
-                walkImageArray = appRecord.monsterImageArray[0];
-            }
-            //向下走
-            if(nextGrid.rowX>currentGrid.rowX){
-                walkImageArray = appRecord.monsterImageArray[1];
-            }
-            //向左走
-            if(nextGrid.colY<currentGrid.colY){
-                walkImageArray = appRecord.monsterImageArray[2];
-            }
-            //向右走
-            if(nextGrid.colY>currentGrid.colY){
-                walkImageArray = appRecord.monsterImageArray[3];
-            }
-            
-            
-        }
-        else if(index == appRecord.roadArray.count-1 ){
-            
-            MKGrid *currentGrid,*preGrid;
-            currentGrid = appRecord.roadArray[index];
-            preGrid = appRecord.roadArray[index-1];
-            
-            //向上走
-            if(preGrid.rowX>currentGrid.rowX){
-                walkImageArray = appRecord.monsterImageArray[0];
-            }
-            //向下走
-            if(preGrid.rowX<currentGrid.rowX){
-                walkImageArray = appRecord.monsterImageArray[1];
-            }
-            //向左走
-            if(preGrid.colY>currentGrid.colY){
-                walkImageArray = appRecord.monsterImageArray[2];
-            }
-            //向右走
-            if(preGrid.colY<currentGrid.colY){
-                walkImageArray = appRecord.monsterImageArray[3];
-            }
-            
-            
-        }
-        else{
-            walkImageArray = appRecord.monsterImageArray[1];
-        }
-        
-        //walkImageArray = appRecord.monsterImageArray[1];
+        MKGrid *currentGrid;
+        currentGrid = appRecord.roadArray[index];
+        walkImageArray = appRecord.monsterImageArray[currentGrid.moveIndex];
         UIImage *Image ;
         Image = walkImageArray[i];
-        
-        
-        
-        MKGrid *currentGrid ;
-        currentGrid = appRecord.roadArray[index];
-        
         [currentGrid setImage:Image forState:UIControlStateNormal];
         //    if(self.is_attacked){
         //        Road.Button.backgroundColor = [UIColor redColor];
@@ -154,5 +165,7 @@
         index++ ;
     }
 }
+
+#endif
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation MKAppRecord
 
-@synthesize gridArray,monsterArray,roadArray,towerArray,recordExportPath;
+@synthesize gridMatrixArray,monsterArray,roadArray,towerArray,recordExportPath;
 
 -(instancetype)init{
     
@@ -35,6 +35,12 @@
         MKArchiver *saveArchiver = [[MKArchiver alloc]init];
         saveArchiver.rowX = saveGrid.rowX;
         saveArchiver.colY = saveGrid.colY;
+        saveArchiver.moveX = saveGrid.moveX;
+        saveArchiver.moveY = saveGrid.moveY;
+        saveArchiver.moveIndex = saveGrid.moveIndex;
+        saveArchiver.width = saveGrid.width;
+        saveArchiver.height = saveGrid.height;
+        saveArchiver.gridRole = saveGrid.gridRole;
         [saveArray addObject:saveArchiver];
     }
     
@@ -56,7 +62,16 @@
     for(MKArchiver *importArchiver in importArray){
         
         MKGrid *importGrid;
-        importGrid = gridArray[importArchiver.colY][importArchiver.rowX];
+        importGrid = gridMatrixArray[importArchiver.colY][importArchiver.rowX];
+        
+        importGrid.rowX = importArchiver.rowX;
+        importGrid.colY = importArchiver.colY;
+        importGrid.moveX = importArchiver.moveX;
+        importGrid.moveY = importArchiver.moveY;
+        importGrid.moveIndex = importArchiver.moveIndex;
+        importGrid.width = importArchiver.width;
+        importGrid.height = importArchiver.height;
+        importGrid.gridRole = importArchiver.gridRole;
         
         [_roadRecordArray addObject:importGrid];
     }
